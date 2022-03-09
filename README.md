@@ -1,6 +1,9 @@
-# Cassandra Access Control by Intezer Security (security@intezer.com)
+# Cassandra Access Control 
+### By Aner Izraeli - Intezer Security Manager (security@intezer.com)
 We’re releasing an open-source tool you can use now, which we developed as a homemade Just-In-Time database access control tool for our sensitive database.
 This tool syncs with our directory service (Jumpcloud), slack, SIEM, and finally, our Apache Cassandra database.
+
+You can read more in our security blog: 
 
 # Prerequisits
 1. Create new key space (e.g - ttl_accounts) in your DB to host jit_accounts table for the ttl feature.
