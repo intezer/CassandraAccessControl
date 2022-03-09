@@ -3,7 +3,7 @@ We’re releasing an open-source tool you can use now, which we developed as a h
 This tool syncs with our directory service (Jumpcloud), slack, SIEM, and finally, our Apache Cassandra database.
 
 # Prerequisits
-1. Create new key space (e.g - ttl_accounts) in your DB to hold jit_accounts table for the ttl feature.
+1. Create new key space (e.g - ttl_accounts) in your DB to host jit_accounts table for the ttl feature.
 2. Create a new table (jit_accounts) in ttl_accounts key space
 `CREATE TABLE intezeraccounts(username text PRIMARY KEY , expirytimestamp timestamp, ttl int, permission text);`
 3. It is recommended to create a dedicated service user to interacte with DB
