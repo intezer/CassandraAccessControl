@@ -25,7 +25,7 @@ def append_to_jit_accounts_table(user, hours_to_append, permissions_to_set):
 
     logger.info(f'Inserting user {user} to jit_accounts table with {hours_to_append} hours ttl and {permissions_to_set} permissions')
     try:
-        session.execute('INSERT INTO accounts_ttl.jit_accounts(username,expirytimestamp,ttl, permission)VALUES (%s, %s, %s, %s)',
+        session.execute('INSERT INTO ttl_accounts.jit_accounts(username,expirytimestamp,ttl, permission)VALUES (%s, %s, %s, %s)',
                         (user,expirytimestamp, hours_to_append, permissions_to_set))
 
         logger.info(f'Successfully inserted user {user} to jit_accounts table with {hours_to_append} hours ttl and {permissions_to_set} permissions')
