@@ -17,7 +17,7 @@ def reset_password_and_remove(user, session):
         logger.error(f'Error while resetting password for user {user}')
         return
     else:
-        delete = session.prepare('DELETE FROM accounts_ttl.intezeraccounts WHERE username=?')
+        delete = session.prepare('DELETE FROM ttl_accounts.jit_accounts WHERE username=?')
         user_to_delete = []
         user_to_delete.append(user)
         for username in user_to_delete:
@@ -25,7 +25,7 @@ def reset_password_and_remove(user, session):
                 session.execute(delete, [username])
                 logger.info(f'Successfully deleted user {user} from DB')
             except Exception:
-                logger.exception(f'Error while deleting user {user} from intezeraccounts table')
+                logger.exception(f'Error while deleting user {user} from jit_accounts table')
                 return
 
 
@@ -35,8 +35,8 @@ def ttl_management():
     logger.info('Enrolling TTLING process')
 
     try:
-        logger.info(f'Querying all users from intezeraccounts table')
-        usernames = session.execute('select username,expirytimestamp,ttl FROM accounts_ttl.intezeraccounts').all()
+        logger.info(f'Querying all users from jit_accounts table')
+        usernames = session.execute('select username,expirytimestamp,ttl FROM ttl_accounts.jit_accounts').all()
 
     except Exception:
         logger.exception('Exception on querying system_auth.roles table')
@@ -51,4 +51,4 @@ def ttl_management():
             else:
                 logger.info(f'ttl for {role.username} still not expired. Nothing to do. Exiting TTling process')
     else:
-        logger.info('intezeraccounts table is empty. Nothing to do. Exiting TTling process')
+        logger.info('jit_accounts table is empty. Nothing to do. Exiting TTling process')
