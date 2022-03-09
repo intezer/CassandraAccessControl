@@ -1,0 +1,4 @@
+cassandra_end_point:
+    - "<your_ip address>"
+cassandra_user_name:
+    - "<your_db_user_name>"
